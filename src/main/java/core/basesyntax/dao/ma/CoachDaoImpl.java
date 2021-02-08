@@ -15,7 +15,6 @@ public class CoachDaoImpl extends PersonDaoImpl implements CoachDao {
         try (Session session = sessionFactory.openSession()) {
             return session.createQuery("FROM Coach c WHERE c.experience>:exp", Coach.class)
                     .setParameter("exp", years).getResultList();
-
         } catch (Exception e) {
             throw new RuntimeException("Unable to retrieve Mentors older than " + years, e);
         }
